@@ -1,6 +1,6 @@
 if (!require(VGAM)) {install.packages("VGAM"); require(VGAM)}
 
-### LLN ###
+### Law of Large Numbers ###
 
 set.seed(42)
 N <- 1e6
@@ -31,7 +31,7 @@ lln.cauchy <- data.frame(pareto = lln.cauchy, mean = cumsum(lln.cauchy) / 1:leng
 plot(lln.cauchy$mean[1:5000], type='l')
 plot(lln.cauchy$mean, type='l')
 
-### CLT ###
+### Central Limit Theorem ###
 
 cumvar <- function(x) {
   n <- 1 : length(x)
@@ -62,7 +62,7 @@ plot(clt.pareto$mean, type='l', ylim=c(2.8, 3.2))
 abline(h=3, col='red')
 lines(clt.pareto$c1, col='blue'); lines(clt.pareto$c2, col='blue')
 
-### MC Int ###
+### Monte-Carlo Integration ###
 
 mcint.pi <- cbind(x=runif(N), y=runif(N))
 mcint.pi.fun <- function(x) {sqrt(1 - x^2)}
@@ -81,13 +81,13 @@ plot(mcint.res$mean, type='l', ylim=c(0.99, 1.01))
 abline(h=1, col='red')
 lines(mcint.res$c1, col='blue'); lines(mcint.res$c2, col='blue')
 
-### Acc-Rej ###
+### Rejection Sampling ###
 
 hist(mcint.pi[mcint.pi.res, 1], breaks=100, prob=T)
 plot.pts <-(0:1e3)/1e3
 lines(x = plot.pts, y = mcint.pi.fun(plot.pts) * 4 / pi, col = 'red')
 
-### Inv ###
+### Inverse Transform Sampling ###
 
 mcinv.pts <- runif(N)
 mcinv.res <- - log(1 - mcinv.pts) / 2
