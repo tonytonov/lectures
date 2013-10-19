@@ -1,3 +1,5 @@
+if (!require(VGAM)) {install.packages("VGAM"); require(VGAM)}
+
 ### LLN ###
 
 set.seed(42)
@@ -17,7 +19,6 @@ abline(h=1/2, col='red', lwd=2)
 plot(lln.exp$mean, type='l', ylim=c(0.49, 0.51))
 abline(h=1/2, col='red', lwd=2)
 
-require(VGAM)
 lln.pareto <- rpareto(N, 1, 3/2)
 lln.pareto <- data.frame(pareto = lln.pareto, mean = cumsum(lln.pareto) / 1:length(lln.pareto))
 plot(lln.pareto$mean[1:5000], type='l')
