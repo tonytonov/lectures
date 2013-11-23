@@ -4,31 +4,32 @@ if (!require(VGAM)) {install.packages("VGAM"); require(VGAM)}
 
 set.seed(42)
 N <- 1e6
+Np <- 5e3
 
 lln.dice <- sample(1:6, N, replace = T)
 lln.dice <- data.frame(dice = lln.dice, mean = cumsum(lln.dice) / 1:length(lln.dice))
-plot(lln.dice$mean[1:5000], type='l')
+plot(lln.dice$mean[1:Np], type='l')
 abline(h=3.5, col='red', lwd=2)
 plot(lln.dice$mean, type='l', ylim=c(3.45, 3.55))
 abline(h=3.5, col='red', lwd=2)
 
 lln.exp <- rexp(N, rate = 2)
 lln.exp <- data.frame(exp = lln.exp, mean = cumsum(lln.exp) / 1:length(lln.exp))
-plot(lln.exp$mean[1:5000], type='l')
+plot(lln.exp$mean[1:Np], type='l')
 abline(h=1/2, col='red', lwd=2)
 plot(lln.exp$mean, type='l', ylim=c(0.49, 0.51))
 abline(h=1/2, col='red', lwd=2)
 
 lln.pareto <- rpareto(N, 1, 3/2)
 lln.pareto <- data.frame(pareto = lln.pareto, mean = cumsum(lln.pareto) / 1:length(lln.pareto))
-plot(lln.pareto$mean[1:5000], type='l')
+plot(lln.pareto$mean[1:Np], type='l')
 abline(h=3, col='red', lwd=2)
 plot(lln.pareto$mean, type='l', ylim=c(2.8, 3.2))
 abline(h=3, col='red', lwd=2)
 
 lln.cauchy <- rcauchy(N)
 lln.cauchy <- data.frame(pareto = lln.cauchy, mean = cumsum(lln.cauchy) / 1:length(lln.cauchy))
-plot(lln.cauchy$mean[1:5000], type='l')
+plot(lln.cauchy$mean[1:Np], type='l')
 plot(lln.cauchy$mean, type='l')
 
 ### Central Limit Theorem ###
