@@ -29,9 +29,14 @@ CheckAntiSymMatrix(mat2)
 
 MassCenterNum <- function(v)
 {
+  which.min(abs(cumsum(v) - rev(cumsum(rev(v)))))
+}
+
+MassCenterNum2 <- function(v)
+{
   which.min(sapply(seq_along(v), function(i) abs(sum(v[1:(i-1)]) - sum(v[(i+1):length(v)]))))
 }
-  
+
 MassCenterStr <- function(s)
 {
   MassCenterNum(match(unlist(strsplit(tolower(s), "")), letters))
