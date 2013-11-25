@@ -13,7 +13,7 @@ CheckSymMatrix <- function(mat)
 
 CheckAntiSymMatrix <- function(mat)
 {
-  checkSymMatrix(mat[rev(seq_len(nrow(mat))), ])
+  CheckSymMatrix(mat[rev(seq_len(nrow(mat))), ])
 }
 
 N <- 100
@@ -34,7 +34,7 @@ MassCenterNum <- function(v)
   
 MassCenterStr <- function(s)
 {
-  massCenterNum(match(unlist(strsplit(tolower(s), "")), letters))
+  MassCenterNum(match(unlist(strsplit(tolower(s), "")), letters))
 }
 
 v <-  c(5, 2, 4, 8, 3, 1, 1, 6, 2)
