@@ -8,7 +8,7 @@ GenSymMatrix <- function(N)
 
 CheckSymMatrix <- function(mat)
 {
-  all(mat - t(mat) < .Machine$double.eps^.5)
+  all(abs(mat - t(mat)) < .Machine$double.eps^.5)
 }
 
 CheckAntiSymMatrix <- function(mat)
